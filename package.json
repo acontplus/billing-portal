@@ -12,7 +12,17 @@
     "format:check": "prettier --check .",
     "type-check": "tsc --noEmit",
     "prepare": "husky",
-    "pre-commit": "lint-staged"
+    "pre-commit": "lint-staged",
+    "supabase:start": "supabase start",
+    "supabase:stop": "supabase stop",
+    "supabase:status": "supabase status",
+    "supabase:reset": "supabase db reset",
+    "supabase:migration:new": "supabase migration new",
+    "supabase:migration:up": "supabase migration up",
+    "supabase:db:push": "supabase db push",
+    "supabase:db:pull": "supabase db pull",
+    "supabase:generate:types": "supabase gen types typescript --local > types/supabase.ts",
+    "supabase:seed": "supabase db reset"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -46,6 +56,7 @@
     "lint-staged": "^15.2.11",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
+    "supabase": "^1.207.7",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
