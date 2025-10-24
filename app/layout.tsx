@@ -1,11 +1,11 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Header } from "@/components/layout/header";
+import type { Metadata } from 'next';
+import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Header } from '@/components/layout/header';
 
 export const metadata: Metadata = {
-  title: "AcontPlus - Portal de Facturación",
-  description: "Portal público de facturación para clientes de AcontPlus",
+  title: 'AcontPlus - Portal de Facturación',
+  description: 'Portal público de facturación para clientes de AcontPlus',
 };
 
 export default function RootLayout({

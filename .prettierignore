@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+.pnp.*
+.yarn/
+
+# Build outputs
+.next/
+out/
+build/
+dist/
+
+# Cache directories
+.cache/
+.parcel-cache/
+.turbo/
+.tailwindcss-cache
+
+# Generated files
+*.tsbuildinfo
+next-env.d.ts
+
+# Coverage reports
+coverage/
+*.lcov
+
+# Logs
+*.log
+logs/
+
+# Environment files
+.env*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# Package files
+*.tgz
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Supabase
+.supabase/
+
+# Test results
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Storybook
+storybook-static/
+.storybook-out/
+
+# Documentation that shouldn't be formatted
+CHANGELOG.md
+LICENSE
+*.md

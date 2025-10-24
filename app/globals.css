@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   /* Brand Colors - OKLCH */
@@ -8,32 +8,32 @@
   --color-secondary-foreground: oklch(0.11 0.047 222);
   --color-accent: oklch(0.84 0.015 199);
   --color-accent-foreground: oklch(0.11 0.047 222);
-  
+
   /* Base Colors */
   --color-background: oklch(1 0 0);
   --color-foreground: oklch(0.11 0.047 222);
-  
+
   /* Card */
   --color-card: oklch(1 0 0);
   --color-card-foreground: oklch(0.11 0.047 222);
-  
+
   /* Popover */
   --color-popover: oklch(1 0 0);
   --color-popover-foreground: oklch(0.11 0.047 222);
-  
+
   /* Muted */
   --color-muted: oklch(0.96 0.015 199);
   --color-muted-foreground: oklch(0.47 0.016 215);
-  
+
   /* Border & Input */
   --color-border: oklch(0.91 0.032 214);
   --color-input: oklch(0.91 0.032 214);
   --color-ring: oklch(0.11 0.047 222);
-  
+
   /* Destructive */
   --color-destructive: oklch(0.6 0.084 0);
   --color-destructive-foreground: oklch(0.98 0.004 210);
-  
+
   /* Radius */
   --radius: 0.5rem;
 }
@@ -47,28 +47,28 @@
     --color-secondary-foreground: oklch(0.98 0.004 210);
     --color-accent: oklch(0.17 0.033 217);
     --color-accent-foreground: oklch(0.98 0.004 210);
-    
+
     /* Base Colors */
     --color-background: oklch(0.11 0.047 222);
     --color-foreground: oklch(0.98 0.004 210);
-    
+
     /* Card */
     --color-card: oklch(0.11 0.047 222);
     --color-card-foreground: oklch(0.98 0.004 210);
-    
+
     /* Popover */
     --color-popover: oklch(0.11 0.047 222);
     --color-popover-foreground: oklch(0.98 0.004 210);
-    
+
     /* Muted */
     --color-muted: oklch(0.17 0.033 217);
     --color-muted-foreground: oklch(0.65 0.02 215);
-    
+
     /* Border & Input */
     --color-border: oklch(0.17 0.033 217);
     --color-input: oklch(0.17 0.033 217);
     --color-ring: oklch(0.86 0.095 212);
-    
+
     /* Destructive */
     --color-destructive: oklch(0.31 0.063 0);
     --color-destructive-foreground: oklch(0.98 0.004 210);
@@ -78,6 +78,8 @@
 @layer base {
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }

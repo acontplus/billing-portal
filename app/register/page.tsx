@@ -1,84 +1,91 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { createClient } from "@/lib/supabase/client"
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { createClient } from '@/lib/supabase/client';
 
 export default function RegisterPage() {
-  const router = useRouter()
-  const supabase = createClient()
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
-  
+  const router = useRouter();
+  const supabase = createClient();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    firstName: "",
-    lastName: "",
-    displayName: "",
-    dateOfBirth: "",
-    idCard: "",
-    street: "",
-    city: "",
-    state: "",
-    zipCode: "",
-  })
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+    displayName: '',
+    dateOfBirth: '',
+    idCard: '',
+    street: '',
+    city: '',
+    state: '',
+    zipCode: '',
+  });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
 
   const validateForm = () => {
     if (formData.password !== formData.confirmPassword) {
-      setError("Las contraseñas no coinciden")
-      return false
+      setError('Las contraseñas no coinciden');
+      return false;
     }
 
     if (formData.password.length < 6) {
-      setError("La contraseña debe tener al menos 6 caracteres")
-      return false
+      setError('La contraseña debe tener al menos 6 caracteres');
+      return false;
     }
 
     if (formData.firstName.length > 150) {
-      setError("El nombre debe tener menos de 150 caracteres")
-      return false
+      setError('El nombre debe tener menos de 150 caracteres');
+      return false;
     }
 
     if (formData.lastName.length > 150) {
-      setError("El apellido debe tener menos de 150 caracteres")
-      return false
+      setError('El apellido debe tener menos de 150 caracteres');
+      return false;
     }
 
     if (formData.idCard.length > 25) {
-      setError("La cédula debe tener menos de 25 caracteres")
-      return false
+      setError('La cédula debe tener menos de 25 caracteres');
+      return false;
     }
 
     if (formData.zipCode && !/^\d{6}$/.test(formData.zipCode)) {
-      setError("El código postal debe tener 6 dígitos (formato colombiano)")
-      return false
+      setError('El código postal debe tener 6 dígitos (formato colombiano)');
+      return false;
     }
 
-    return true
-  }
+    return true;
+  };
 
   const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     if (!validateForm()) {
-      setLoading(false)
-      return
+      setLoading(false);
+      return;
     }
 
     try {
@@ -86,48 +93,46 @@ export default function RegisterPage() {
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email: formData.email,
         password: formData.password,
-      })
+      });
 
       if (authError) {
-        setError(authError.message)
-        return
+        setError(authError.message);
+        return;
       }
 
       if (authData.user) {
         // Create the profile
-        const { error: profileError } = await supabase
-          .from("profiles")
-          .insert({
-            id: authData.user.id,
-            email: formData.email,
-            first_name: formData.firstName,
-            last_name: formData.lastName,
-            display_name: formData.displayName || null,
-            date_of_birth: formData.dateOfBirth || null,
-            erp_customer_id: formData.idCard,
-            street: formData.street || null,
-            city: formData.city || null,
-            state: formData.state || null,
-            zip_code: formData.zipCode || null,
-          })
+        const { error: profileError } = await supabase.from('profiles').insert({
+          id: authData.user.id,
+          email: formData.email,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          display_name: formData.displayName || null,
+          date_of_birth: formData.dateOfBirth || null,
+          erp_customer_id: formData.idCard,
+          street: formData.street || null,
+          city: formData.city || null,
+          state: formData.state || null,
+          zip_code: formData.zipCode || null,
+        });
 
         if (profileError) {
-          setError(`Error al crear el perfil: ${profileError.message}`)
-          return
+          setError(`Error al crear el perfil: ${profileError.message}`);
+          return;
         }
 
-        router.push("/dashboard")
-        router.refresh()
+        router.push('/dashboard');
+        router.refresh();
       }
     } catch {
-      setError("Ocurrió un error inesperado")
+      setError('Ocurrió un error inesperado');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="container flex items-center justify-center min-h-[calc(100vh-4rem)] py-10">
+    <div className="container flex min-h-[calc(100vh-4rem)] items-center justify-center py-10">
       <Card className="w-full max-w-2xl">
         <CardHeader>
           <CardTitle>Registrarse</CardTitle>
@@ -138,15 +143,15 @@ export default function RegisterPage() {
         <form onSubmit={handleRegister}>
           <CardContent className="space-y-6">
             {error && (
-              <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md">
+              <div className="text-destructive bg-destructive/10 rounded-md p-3 text-sm">
                 {error}
               </div>
             )}
-            
+
             {/* Account Information */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold">Información de Cuenta</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="email">Correo Electrónico *</Label>
                   <Input
@@ -185,7 +190,9 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword">Confirmar Contraseña *</Label>
+                  <Label htmlFor="confirmPassword">
+                    Confirmar Contraseña *
+                  </Label>
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
@@ -202,7 +209,7 @@ export default function RegisterPage() {
             {/* Personal Information */}
             <div className="space-y-4">
               <h3 className="text-sm font-semibold">Información Personal</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="firstName">Nombre *</Label>
                   <Input
@@ -257,8 +264,10 @@ export default function RegisterPage() {
 
             {/* Address Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold">Información de Dirección</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <h3 className="text-sm font-semibold">
+                Información de Dirección
+              </h3>
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="space-y-2 md:col-span-2">
                   <Label htmlFor="street">Calle</Label>
                   <Input
@@ -314,10 +323,10 @@ export default function RegisterPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creando cuenta..." : "Crear Cuenta"}
+              {loading ? 'Creando cuenta...' : 'Crear Cuenta'}
             </Button>
-            <div className="text-sm text-center text-muted-foreground">
-              ¿Ya tienes una cuenta?{" "}
+            <div className="text-muted-foreground text-center text-sm">
+              ¿Ya tienes una cuenta?{' '}
               <Link href="/login" className="text-primary hover:underline">
                 Iniciar Sesión
               </Link>
@@ -326,5 +335,5 @@ export default function RegisterPage() {
         </form>
       </Card>
     </div>
-  )
+  );
 }

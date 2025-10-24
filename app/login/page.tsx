@@ -1,51 +1,58 @@
-"use client"
+'use client';
 
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { createClient } from "@/lib/supabase/client"
+import { useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import { createClient } from '@/lib/supabase/client';
 
 export default function LoginPage() {
-  const router = useRouter()
-  const supabase = createClient()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const router = useRouter();
+  const supabase = createClient();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(null)
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
-      })
+      });
 
       if (error) {
-        setError(error.message)
-        return
+        setError(error.message);
+        return;
       }
 
       if (data.user) {
-        router.push("/dashboard")
-        router.refresh()
+        router.push('/dashboard');
+        router.refresh();
       }
     } catch {
-      setError("Ocurrió un error inesperado")
+      setError('Ocurrió un error inesperado');
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   return (
-    <div className="container flex items-center justify-center min-h-[calc(100vh-4rem)] py-10">
+    <div className="container flex min-h-[calc(100vh-4rem)] items-center justify-center py-10">
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle>Iniciar Sesión</CardTitle>
@@ -56,7 +63,7 @@ export default function LoginPage() {
         <form onSubmit={handleLogin}>
           <CardContent className="space-y-4">
             {error && (
-              <div className="p-3 text-sm text-destructive bg-destructive/10 rounded-md">
+              <div className="text-destructive bg-destructive/10 rounded-md p-3 text-sm">
                 {error}
               </div>
             )}
@@ -67,7 +74,7 @@ export default function LoginPage() {
                 type="email"
                 placeholder="nombre@ejemplo.com"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 required
                 disabled={loading}
               />
@@ -78,7 +85,7 @@ export default function LoginPage() {
                 id="password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={e => setPassword(e.target.value)}
                 required
                 disabled={loading}
               />
@@ -86,10 +93,10 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
+              {loading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </Button>
-            <div className="text-sm text-center text-muted-foreground">
-              ¿No tienes una cuenta?{" "}
+            <div className="text-muted-foreground text-center text-sm">
+              ¿No tienes una cuenta?{' '}
               <Link href="/register" className="text-primary hover:underline">
                 Registrarse
               </Link>
@@ -98,5 +105,5 @@ export default function LoginPage() {
         </form>
       </Card>
     </div>
-  )
+  );
 }
