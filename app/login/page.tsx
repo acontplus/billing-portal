@@ -38,7 +38,7 @@ export default function LoginPage() {
         router.refresh()
       }
     } catch {
-      setError("An unexpected error occurred")
+      setError("Ocurrió un error inesperado")
     } finally {
       setLoading(false)
     }
@@ -48,9 +48,9 @@ export default function LoginPage() {
     <div className="container flex items-center justify-center min-h-[calc(100vh-4rem)] py-10">
       <Card className="w-full max-w-md">
         <CardHeader>
-          <CardTitle>Login</CardTitle>
+          <CardTitle>Iniciar Sesión</CardTitle>
           <CardDescription>
-            Enter your credentials to access your account
+            Ingresa tus credenciales para acceder a tu cuenta
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleLogin}>
@@ -61,11 +61,11 @@ export default function LoginPage() {
               </div>
             )}
             <div className="space-y-2">
-              <Label htmlFor="email">Email</Label>
+              <Label htmlFor="email">Correo Electrónico</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="name@example.com"
+                placeholder="nombre@ejemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
@@ -73,7 +73,7 @@ export default function LoginPage() {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -86,12 +86,12 @@ export default function LoginPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Signing in..." : "Sign In"}
+              {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
             </Button>
             <div className="text-sm text-center text-muted-foreground">
-              Don&apos;t have an account?{" "}
+              ¿No tienes una cuenta?{" "}
               <Link href="/register" className="text-primary hover:underline">
-                Register
+                Registrarse
               </Link>
             </div>
           </CardFooter>

@@ -22,17 +22,17 @@ export default async function Home() {
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
-            AcontPlus Billing Portal
+            Portal de Facturación AcontPlus
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Access and manage your Ecuadorian electronic invoicing documents (SRI) with ease
+            Accede y gestiona tus documentos de facturación electrónica ecuatoriana (SRI) con facilidad
           </p>
           <div className="flex gap-4 justify-center pt-4">
             <Button asChild size="lg">
-              <Link href="/login">Sign In</Link>
+              <Link href="/login">Iniciar Sesión</Link>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <Link href="/register">Create Account</Link>
+              <Link href="/register">Crear Cuenta</Link>
             </Button>
           </div>
         </div>
@@ -42,9 +42,9 @@ export default async function Home() {
           <Card>
             <CardHeader>
               <FileText className="h-8 w-8 mb-2 text-primary" />
-              <CardTitle>Document Management</CardTitle>
+              <CardTitle>Gestión de Documentos</CardTitle>
               <CardDescription>
-                View, download, and manage all your billing documents in one place
+                Visualiza, descarga y gestiona todos tus documentos de facturación en un solo lugar
               </CardDescription>
             </CardHeader>
           </Card>
@@ -52,9 +52,9 @@ export default async function Home() {
           <Card>
             <CardHeader>
               <Shield className="h-8 w-8 mb-2 text-primary" />
-              <CardTitle>Secure Access</CardTitle>
+              <CardTitle>Acceso Seguro</CardTitle>
               <CardDescription>
-                Your documents are protected with enterprise-grade security and authentication
+                Tus documentos están protegidos con seguridad y autenticación de nivel empresarial
               </CardDescription>
             </CardHeader>
           </Card>
@@ -62,9 +62,9 @@ export default async function Home() {
           <Card>
             <CardHeader>
               <Zap className="h-8 w-8 mb-2 text-primary" />
-              <CardTitle>Easy Downloads</CardTitle>
+              <CardTitle>Descargas Fáciles</CardTitle>
               <CardDescription>
-                Download documents in PDF or XML format with a single click
+                Descarga documentos en formato PDF o XML con un solo clic
               </CardDescription>
             </CardHeader>
           </Card>
@@ -73,22 +73,22 @@ export default async function Home() {
         {/* About Section */}
         <Card>
           <CardHeader>
-            <CardTitle>About the Portal</CardTitle>
+            <CardTitle>Acerca del Portal</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-muted-foreground">
-              The AcontPlus Billing Portal provides secure access to your electronic invoicing documents
-              compliant with Ecuadorian SRI (Servicio de Rentas Internas) regulations.
+              El Portal de Facturación AcontPlus proporciona acceso seguro a tus documentos de facturación electrónica
+              cumpliendo con las regulaciones del SRI (Servicio de Rentas Internas) de Ecuador.
             </p>
             <p className="text-muted-foreground">
-              Our platform offers:
+              Nuestra plataforma ofrece:
             </p>
             <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-              <li>Real-time access to your billing documents</li>
-              <li>PDF and XML download capabilities</li>
-              <li>Document access logging for compliance</li>
-              <li>Dark/Light mode for comfortable viewing</li>
-              <li>Responsive design for mobile and desktop</li>
+              <li>Acceso en tiempo real a tus documentos de facturación</li>
+              <li>Capacidades de descarga en PDF y XML</li>
+              <li>Registro de acceso a documentos para cumplimiento</li>
+              <li>Modo Oscuro/Claro para visualización cómoda</li>
+              <li>Diseño responsivo para móvil y escritorio</li>
             </ul>
           </CardContent>
         </Card>

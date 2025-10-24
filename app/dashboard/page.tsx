@@ -58,9 +58,9 @@ export default async function DashboardPage() {
     <div className="container py-10">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Panel de Control</h1>
           <p className="text-muted-foreground">
-            Welcome back, {profile?.first_name || user.email}!
+            Bienvenido de nuevo, {profile?.first_name || user.email}!
           </p>
         </div>
 
@@ -68,14 +68,14 @@ export default async function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Total SRI Documents
+                Total de Documentos SRI
               </CardTitle>
               <FileText className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
             <CardContent>
               <div className="text-2xl font-bold">{documentCount}</div>
               <p className="text-xs text-muted-foreground">
-                Ecuadorian electronic invoicing documents
+                Documentos de facturación electrónica ecuatoriana
               </p>
             </CardContent>
           </Card>
@@ -83,7 +83,7 @@ export default async function DashboardPage() {
           <Card>
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">
-                Profile
+                Perfil
               </CardTitle>
               <User className="h-4 w-4 text-muted-foreground" />
             </CardHeader>
@@ -92,7 +92,7 @@ export default async function DashboardPage() {
                 {profile?.first_name} {profile?.last_name}
               </div>
               <p className="text-xs text-muted-foreground">
-                Customer ID: {profile?.erp_customer_id}
+                ID de Cliente: {profile?.erp_customer_id}
               </p>
             </CardContent>
           </Card>
@@ -100,9 +100,9 @@ export default async function DashboardPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
+            <CardTitle>Acciones Rápidas</CardTitle>
             <CardDescription>
-              Access your documents and manage your account
+              Accede a tus documentos y gestiona tu cuenta
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -111,9 +111,9 @@ export default async function DashboardPage() {
                 href="/documents"
                 className="block p-4 border rounded-lg hover:bg-accent transition-colors"
               >
-                <div className="font-semibold">View Documents</div>
+                <div className="font-semibold">Ver Documentos</div>
                 <div className="text-sm text-muted-foreground">
-                  Browse and download your billing documents
+                  Explora y descarga tus documentos de facturación
                 </div>
               </a>
             </div>

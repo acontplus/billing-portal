@@ -4,8 +4,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Header } from "@/components/layout/header";
 
 export const metadata: Metadata = {
-  title: "AcontPlus - Billing Portal",
-  description: "Public billing portal for AcontPlus customers",
+  title: "AcontPlus - Portal de Facturación",
+  description: "Portal público de facturación para clientes de AcontPlus",
 };
 
 export default function RootLayout({
@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className="font-sans antialiased">
         <ThemeProvider
           attribute="class"

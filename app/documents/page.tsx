@@ -28,7 +28,7 @@ export default function DocumentsPage() {
       } = await supabase.auth.getUser()
 
       if (!user) {
-        setError("Not authenticated")
+        setError("No autenticado")
         return
       }
 
@@ -40,7 +40,7 @@ export default function DocumentsPage() {
         .single()
 
       if (!profile) {
-        setError("Profile not found")
+        setError("Perfil no encontrado")
         return
       }
 
@@ -50,13 +50,13 @@ export default function DocumentsPage() {
       )
 
       if (!response.ok) {
-        throw new Error("Failed to fetch documents")
+        throw new Error("Error al obtener documentos")
       }
 
       const data = await response.json()
       setDocuments(data.documents || [])
     } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
+      setError(err instanceof Error ? err.message : "Ocurrió un error")
     } finally {
       setLoading(false)
     }
@@ -88,7 +88,7 @@ export default function DocumentsPage() {
       )
 
       if (!response.ok) {
-        throw new Error("Failed to download PDF")
+        throw new Error("Error al descargar PDF")
       }
 
       const blob = await response.blob()
@@ -103,7 +103,7 @@ export default function DocumentsPage() {
 
       await logDocumentAccess(doc.id, "download_pdf")
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Failed to download PDF")
+      alert(err instanceof Error ? err.message : "Error al descargar PDF")
     } finally {
       setDownloadingId(null)
     }
@@ -117,7 +117,7 @@ export default function DocumentsPage() {
       )
 
       if (!response.ok) {
-        throw new Error("Failed to download XML")
+        throw new Error("Error al descargar XML")
       }
 
       const blob = await response.blob()
@@ -132,7 +132,7 @@ export default function DocumentsPage() {
 
       await logDocumentAccess(doc.id, "download_xml")
     } catch (err) {
-      alert(err instanceof Error ? err.message : "Failed to download XML")
+      alert(err instanceof Error ? err.message : "Error al descargar XML")
     } finally {
       setDownloadingId(null)
     }
@@ -143,7 +143,7 @@ export default function DocumentsPage() {
       <div className="container py-10 flex items-center justify-center min-h-[calc(100vh-4rem)]">
         <div className="text-center space-y-4">
           <Loader2 className="h-8 w-8 animate-spin mx-auto" />
-          <p className="text-muted-foreground">Loading documents...</p>
+          <p className="text-muted-foreground">Cargando documentos...</p>
         </div>
       </div>
     )
@@ -156,7 +156,7 @@ export default function DocumentsPage() {
           <CardContent className="pt-6">
             <div className="text-center space-y-2">
               <p className="text-destructive">{error}</p>
-              <Button onClick={fetchDocuments}>Retry</Button>
+              <Button onClick={fetchDocuments}>Reintentar</Button>
             </div>
           </CardContent>
         </Card>
@@ -168,17 +168,17 @@ export default function DocumentsPage() {
     <div className="container py-10">
       <div className="space-y-6">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight">Documents</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Documentos</h1>
           <p className="text-muted-foreground">
-            View and download your billing documents
+            Visualiza y descarga tus documentos de facturación
           </p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Your Documents</CardTitle>
+            <CardTitle>Tus Documentos</CardTitle>
             <CardDescription>
-              {documents.length} document(s) found
+              {documents.length} documento(s) encontrado(s)
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -186,19 +186,19 @@ export default function DocumentsPage() {
               <div className="text-center py-10 space-y-4">
                 <FileText className="h-12 w-12 mx-auto text-muted-foreground" />
                 <p className="text-muted-foreground">
-                  No documents found
+                  No se encontraron documentos
                 </p>
               </div>
             ) : (
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Document Type</TableHead>
-                    <TableHead>Document Number</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Amount</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
+                    <TableHead>Tipo de Documento</TableHead>
+                    <TableHead>Número de Documento</TableHead>
+                    <TableHead>Fecha</TableHead>
+                    <TableHead>Monto</TableHead>
+                    <TableHead>Estado</TableHead>
+                    <TableHead className="text-right">Acciones</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
