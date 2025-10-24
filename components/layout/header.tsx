@@ -37,7 +37,7 @@ export function Header() {
                 }`}
               >
                 <LayoutDashboard className="h-4 w-4" />
-                Dashboard
+                Panel
               </Link>
               <Link
                 href="/documents"
@@ -46,7 +46,7 @@ export function Header() {
                 }`}
               >
                 <FileText className="h-4 w-4" />
-                Documents
+                Documentos
               </Link>
             </nav>
           )}
@@ -56,7 +56,7 @@ export function Header() {
           {!isAuthPage && (
             <Button variant="ghost" size="icon" onClick={handleLogout}>
               <LogOut className="h-4 w-4" />
-              <span className="sr-only">Logout</span>
+              <span className="sr-only">Cerrar Sesión</span>
             </Button>
           )}
         </div>

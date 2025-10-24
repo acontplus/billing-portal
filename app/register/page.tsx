@@ -39,32 +39,32 @@ export default function RegisterPage() {
 
   const validateForm = () => {
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match")
+      setError("Las contraseñas no coinciden")
       return false
     }
 
     if (formData.password.length < 6) {
-      setError("Password must be at least 6 characters")
+      setError("La contraseña debe tener al menos 6 caracteres")
       return false
     }
 
     if (formData.firstName.length > 150) {
-      setError("First name must be less than 150 characters")
+      setError("El nombre debe tener menos de 150 caracteres")
       return false
     }
 
     if (formData.lastName.length > 150) {
-      setError("Last name must be less than 150 characters")
+      setError("El apellido debe tener menos de 150 caracteres")
       return false
     }
 
     if (formData.idCard.length > 25) {
-      setError("ID Card must be less than 25 characters")
+      setError("La cédula debe tener menos de 25 caracteres")
       return false
     }
 
     if (formData.zipCode && !/^\d{6}$/.test(formData.zipCode)) {
-      setError("ZIP code must be 6 digits (Colombian format)")
+      setError("El código postal debe tener 6 dígitos (formato colombiano)")
       return false
     }
 
@@ -112,7 +112,7 @@ export default function RegisterPage() {
           })
 
         if (profileError) {
-          setError(`Profile creation failed: ${profileError.message}`)
+          setError(`Error al crear el perfil: ${profileError.message}`)
           return
         }
 
@@ -120,7 +120,7 @@ export default function RegisterPage() {
         router.refresh()
       }
     } catch {
-      setError("An unexpected error occurred")
+      setError("Ocurrió un error inesperado")
     } finally {
       setLoading(false)
     }
@@ -130,9 +130,9 @@ export default function RegisterPage() {
     <div className="container flex items-center justify-center min-h-[calc(100vh-4rem)] py-10">
       <Card className="w-full max-w-2xl">
         <CardHeader>
-          <CardTitle>Register</CardTitle>
+          <CardTitle>Registrarse</CardTitle>
           <CardDescription>
-            Create a new account to access your billing documents
+            Crea una nueva cuenta para acceder a tus documentos de facturación
           </CardDescription>
         </CardHeader>
         <form onSubmit={handleRegister}>
@@ -145,10 +145,10 @@ export default function RegisterPage() {
             
             {/* Account Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold">Account Information</h3>
+              <h3 className="text-sm font-semibold">Información de Cuenta</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="email">Correo Electrónico *</Label>
                   <Input
                     id="email"
                     name="email"
@@ -160,7 +160,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="idCard">ID Card (ERP Customer ID) *</Label>
+                  <Label htmlFor="idCard">Cédula (ID Cliente ERP) *</Label>
                   <Input
                     id="idCard"
                     name="idCard"
@@ -173,7 +173,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="password">Password *</Label>
+                  <Label htmlFor="password">Contraseña *</Label>
                   <Input
                     id="password"
                     name="password"
@@ -185,7 +185,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="confirmPassword">Confirm Password *</Label>
+                  <Label htmlFor="confirmPassword">Confirmar Contraseña *</Label>
                   <Input
                     id="confirmPassword"
                     name="confirmPassword"
@@ -201,10 +201,10 @@ export default function RegisterPage() {
 
             {/* Personal Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold">Personal Information</h3>
+              <h3 className="text-sm font-semibold">Información Personal</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="firstName">First Name *</Label>
+                  <Label htmlFor="firstName">Nombre *</Label>
                   <Input
                     id="firstName"
                     name="firstName"
@@ -217,7 +217,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="lastName">Last Name *</Label>
+                  <Label htmlFor="lastName">Apellido *</Label>
                   <Input
                     id="lastName"
                     name="lastName"
@@ -230,7 +230,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="displayName">Display Name</Label>
+                  <Label htmlFor="displayName">Nombre para Mostrar</Label>
                   <Input
                     id="displayName"
                     name="displayName"
@@ -242,7 +242,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="dateOfBirth">Date of Birth</Label>
+                  <Label htmlFor="dateOfBirth">Fecha de Nacimiento</Label>
                   <Input
                     id="dateOfBirth"
                     name="dateOfBirth"
@@ -257,10 +257,10 @@ export default function RegisterPage() {
 
             {/* Address Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-semibold">Address Information</h3>
+              <h3 className="text-sm font-semibold">Información de Dirección</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="street">Street</Label>
+                  <Label htmlFor="street">Calle</Label>
                   <Input
                     id="street"
                     name="street"
@@ -272,7 +272,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="city">City</Label>
+                  <Label htmlFor="city">Ciudad</Label>
                   <Input
                     id="city"
                     name="city"
@@ -284,7 +284,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="state">State</Label>
+                  <Label htmlFor="state">Estado/Provincia</Label>
                   <Input
                     id="state"
                     name="state"
@@ -296,7 +296,7 @@ export default function RegisterPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="zipCode">ZIP Code (6 digits)</Label>
+                  <Label htmlFor="zipCode">Código Postal (6 dígitos)</Label>
                   <Input
                     id="zipCode"
                     name="zipCode"
@@ -314,12 +314,12 @@ export default function RegisterPage() {
           </CardContent>
           <CardFooter className="flex flex-col space-y-4">
             <Button type="submit" className="w-full" disabled={loading}>
-              {loading ? "Creating account..." : "Create Account"}
+              {loading ? "Creando cuenta..." : "Crear Cuenta"}
             </Button>
             <div className="text-sm text-center text-muted-foreground">
-              Already have an account?{" "}
+              ¿Ya tienes una cuenta?{" "}
               <Link href="/login" className="text-primary hover:underline">
-                Login
+                Iniciar Sesión
               </Link>
             </div>
           </CardFooter>
