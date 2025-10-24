@@ -63,7 +63,7 @@ NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 
 # API Gateway
-NEXT_PUBLIC_API_GATEWAY_URL=https://gateway.acontplus.com/fact-elect
+NEXT_PUBLIC_API_GATEWAY_URL=
 
 # Application
 NEXT_PUBLIC_APP_URL=http://localhost:3000
