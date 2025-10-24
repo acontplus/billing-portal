@@ -1,9 +1,6 @@
 module.exports = {
   root: true,
-  extends: [
-    'next/core-web-vitals',
-    'next/typescript',
-  ],
+  extends: ['next/core-web-vitals', 'next/typescript'],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -18,4 +15,4 @@ module.exports = {
   rules: {
     // Add custom rules here if needed
   },
-}
+};
